@@ -5,62 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Калькулятор</title>
-    <style>
-        .calculator{
-            display: grid;
-            grid-template-columns: repeat(4, 4em);
-            grid-template-rows: repeat(5, 3em);
-            grid-gap: 1px;
-        }
-        .grid-item, .result-box{
-            box-sizing: border-box;
-            text-align:center;
-            font-size: 1em;
-            padding: 1.2em;
-            color: white;
-            
-        }
-        .grid-item:hover{
-            background-color:darkslategrey;
-        }        
-        .color1 {background-color: #675BA7;}
-        .color2 {background-color: #9BC850;}
-        .color3 {background-color: #A62E5C;}
-        .color4 {background-color: #2A9FBC;}
-        .color5 {background-color: #24253A;}
-        .result-box{
-            grid-column: 1/4;
-            color: #000;
-                       
-        }
-        #d{
-            grid-area: 1/4/1/4;
-        }
-        #u{
-            grid-area: 2/4/2/4;
-        }
-        #p{
-            grid-area: 3/4/3/4;
-        }
-        #m{
-            grid-area: 4/4/4/4;
-        }
-        #r{
-            grid-area: 5/4/5/4;
-        }
-    </style>
+    <link href="css/main.css" rel="stylesheet"></link>
+    <script src="js/main.js"></script>
 </head>
 <body>
     <div class="wrapper">
         <div class="calculator">
             <div class="result-box" id="result">0</div>
-            
             <div class="grid-item color1" id="d" onclick="retDo('/')">/</div>
             <div class="grid-item color2" id="u" onclick="retDo('*')">*</div>
             <div class="grid-item color3" id="p" onclick="retDo('+')">+</div>
             <div class="grid-item color4" id="m" onclick="retDo('-')">-</div>
             <div class="grid-item color5" id="r" onclick="Calc()">=</div>
-            
             <div class="grid-item color3" onclick="retValue('7')">7</div>
             <div class="grid-item color1" onclick="retValue('8')">8</div>
             <div class="grid-item color2" onclick="retValue('9')">9</div>
@@ -75,33 +31,5 @@
             
         </div>
     </div>
-    <script>
-        function Calc(){
-            try {
-                var result = eval(s);
-                if (result == "Infinity"){
-                    throw new SyntaxError("Деление на ноль");
-                }
-                document.getElementById("result").innerText = s + " = " + result;
-                
-            } catch (error) {
-                document.getElementById("result").innerText = "Ошибка";    
-            } 
-                      
-        }
-        var s = "";
-        function retValue(value){
-            s += value;
-            document.getElementById("result").innerText = s;
-        }
-        function retDo(value){
-            s += ' ' + value + ' ';
-            document.getElementById("result").innerText = s;
-        }
-        function resetArea(){
-            s = "";
-            document.getElementById("result").innerText = 0;
-        }
-    </script>
 </body>
 </html>
